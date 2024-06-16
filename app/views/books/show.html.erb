@@ -1,2 +1,44 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="User">
+  <h1>User Info</h1>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <p>Account Name: <%= @current_user.name %></p>
+  <p>introduction: <%= @current_user.introduction %></p>
+
+  <% if @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+</div>
+
+<div class="New book">
+  <%= form_with model: Book.new do |f| %>
+    <h1>New Book</h1>
+    <p>Title</p>
+    <%= f.text_field :title %>
+	
+    <p>Opinion</p>
+    <%= f.text_area :body %>
+	
+    <%= f.submit 'Create Book' %>
+  <% end %>
+</div>
+
+<h1>Book detail</h1>
+<%= image_tag @user.get_profile_image(100,100) %>
+<p><%= @current_user.name %></p>
+  
+<div class="title">
+   <% @books.each do |book| %>
+    <div class="title-box">
+      <%= link_to book.title, book_path(book.id) %>
+    </div>
+    <% end %>
+</div> 
+
+<div class="body">
+   <% @books.each do |book| %>
+    <div class="body-box">
+      <p><%= book.body %></p>
+    </div>
+    <% end %>
+</div> 
+<footer>CopyRight Infratop.inc</footer>
