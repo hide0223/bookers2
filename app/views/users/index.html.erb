@@ -24,11 +24,11 @@
 
 <h1>Users</h1>
 <% @users.each do |user| %>
-<%= image_tag user.get_profile_image(100, 100) %>
-<p><%= user.name %></p>
-<%= link_to "Show", user_path(user) %>
+  <%= image_tag user.get_profile_image(100, 100) %>
+    <p><%= user.name %></p>
+    <%= link_to "Show", user_path(user) %>
 <% end %>
-<footer>CopyRight Infratop.inc</footer>
+
 
 
 

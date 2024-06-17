@@ -1,3 +1,12 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="User">
   <h1>User Info</h1>
   <%= image_tag @user.get_profile_image(100,100) %>
@@ -23,12 +32,13 @@
 </div>
 
 <h1>Books</h1>
-<% @books.each do |book| %>
-<%= image_tag @user.get_profile_image(100,100) %>
-<p><%= @user.name %></p>
-<%= link_to book.title, book_path(book.id) %>
-<p><%= book.body %></p>
-<% end %>
-</div> 
-<footer>CopyRight Infratop.inc</footer>
 
+
+
+<table
+  <% @books.each do |book| %>
+    <%= image_tag book.user.get_profile_image(100,100) %>
+    <%= link_to book.title, book.user == current_user ? book_path(book) : user_path(book.user) %>
+      <p><%= book.body %></p>
+    <% end %>
+</table>
