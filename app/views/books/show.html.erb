@@ -25,16 +25,8 @@
 <h1>Book detail</h1>
 <%= image_tag @user.get_profile_image(100,100) %>
 <p><%= link_to @user.name, user_path(@user.id) %></p>
-  
-<div class="title">
-    <div class="title-box">
-      <%= link_to @book.title, user_path(@user.id) %>
-    </div>
-</div> 
-
-<div class="body">
-    <div class="body-box">
-      <p><%= @book.body %></p>
-    </div>
-</div> 
+<p><%= link_to @book.title, book_path(@book.id) %></p>
+<p><%= @book.body %></p>
+<%= link_to "Edit", edit_book_path(@book.id) %>
+<p><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></p>
 <footer>CopyRight Infratop.inc</footer>

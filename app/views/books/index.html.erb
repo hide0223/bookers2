@@ -23,22 +23,12 @@
 </div>
 
 <h1>Books</h1>
-<div class="title">
-  <p>Title</p>
-   <% @books.each do |book| %>
-    <div class="title-box">
-      <p><%= book.title %></p>
-    </div>
-    <% end %>
-</div> 
-
-<div class="body">
-  <p>Opinion</p>
-   <% @books.each do |book| %>
-    <div class="body-box">
-      <p><%= book.body %></p>
-    </div>
-    <% end %>
+<% @books.each do |book| %>
+<%= image_tag @user.get_profile_image(100,100) %>
+<p><%= @user.name %></p>
+<%= link_to book.title, book_path(book.id) %>
+<p><%= book.body %></p>
+<% end %>
 </div> 
 <footer>CopyRight Infratop.inc</footer>
 
