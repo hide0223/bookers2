@@ -23,7 +23,7 @@
           <%= link_to "Users", users_path %>
         </li>
         <li>
-          <%= link_to "books", books_path %>
+          <%= link_to "Books", books_path %>
         </li>
         <li>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
@@ -33,10 +33,10 @@
           <%= link_to "Bookers", root_path %>
         </li>
         <li>
-          <%= link_to "Home", new_user_session_path %>
+          <%= link_to "Home", root_path %>
         </li>
         <li>
-          <%= link_to "About", about_path %>
+          <%= link_to "About", home_about_path %>
         </li>
         <li>
           <%= link_to "Sign up", new_user_registration_path %>
@@ -46,7 +46,12 @@
         </li>
       <% end %>
     </header>
+    <main>
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>    
     <%= yield %>
+    </main>
   </body>
   <footer>CopyRight Infratop.inc</footer>
 </html>
